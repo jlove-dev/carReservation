@@ -58,7 +58,7 @@ namespace Car {
 		}
 		void prependList(carModel newCar);
 		void removeEntry();
-		carModel getNewCar();
+		void getNewCar(LinkedList linkedList);
 		void printList();
 	};
 }

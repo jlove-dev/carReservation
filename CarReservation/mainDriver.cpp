@@ -8,11 +8,7 @@ int main()
 {
 	LinkedList carList;
 
-	LinkedList::carModel newCar;
-
-	newCar = carList.getNewCar();
-
-	carList.prependList(newCar);
+	carList.getNewCar(carList);
 
 	carList.printList();
 
