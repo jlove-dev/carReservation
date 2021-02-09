@@ -41,8 +41,8 @@ namespace Car {
 		};
 
 
-		LinkedList::carLink* headPtr;
-		LinkedList::carLink* tailPtr;
+		carLink* headPtr;
+		carLink* tailPtr;
 	public:
 		//default constructor for pointers
 		LinkedList()
