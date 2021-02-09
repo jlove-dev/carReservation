@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="carSource.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="menuDriver.cpp" />
     <ClCompile Include="mainDriver.cpp" />

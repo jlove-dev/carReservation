@@ -1,12 +1,20 @@
 #include "carHeader.h"
+#include <iostream>
+#include <string>
 
 using namespace Car;
 
 int main()
 {
-	Car::carReserve();
+	LinkedList carList;
 
-	Car::carReserve::displayMenu();
+	LinkedList::carModel newCar;
+
+	newCar = carList.getNewCar();
+
+	carList.prependList(newCar);
+
+	carList.printList();
 
 	return 0;
 }

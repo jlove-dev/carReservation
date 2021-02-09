@@ -5,9 +5,9 @@ namespace Car {
 
 	class carReserve {
 
-	private:
+	public:
 		//struct to hold the car model information
-		struct carModel 
+		struct carModel
 		{
 			std::string model;
 			std::string color;
@@ -15,11 +15,17 @@ namespace Car {
 			std::string VIN;
 			int year;
 		};
+		
+	};
 
+	class LinkedList : public carReserve
+	{
+
+	private:
 		//struct to build the linked list
 		struct carLink
 		{
-			carModel newCar;
+			carReserve::carModel newCar;
 			carLink* nextPtr; //pointer to next car
 
 			//default constructor
@@ -34,15 +40,25 @@ namespace Car {
 			}
 		};
 
-		carReserve::carLink* headPtr;
-		carReserve::carLink* tailPtr;
 
+		LinkedList::carLink* headPtr;
+		LinkedList::carLink* tailPtr;
 	public:
-		carReserve();
-		virtual ~carReserve();
-		void prependList(carReserve::carModel);
-		void remove(std::string VIN);
-		void displayMenu();
-		
+		//default constructor for pointers
+		LinkedList()
+		{
+			headPtr = nullptr;
+			tailPtr = nullptr;
+		}
+
+		//destructor
+		~LinkedList()
+		{
+
+		}
+		void prependList(carModel newCar);
+		void removeEntry();
+		carModel getNewCar();
+		void printList();
 	};
 }
