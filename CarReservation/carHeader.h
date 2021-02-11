@@ -61,5 +61,7 @@ namespace Car {
 		void getNewCar(LinkedList linkedList);
 		void printList();
 		void toCSV();
+		void menuSelection(LinkedList linkedList);
+		void welcomeMessage();
 	};
 }
