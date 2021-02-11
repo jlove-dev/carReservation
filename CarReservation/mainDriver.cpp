@@ -8,9 +8,9 @@ int main()
 {
 	LinkedList carList;
 
-	carList.welcomeMessage();
+	carList.getNewCar(carList);
 
-	carList.menuSelection(carList);
+	carList.printList();
 
 	return 0;
 }
