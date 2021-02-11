@@ -60,5 +60,6 @@ namespace Car {
 		void removeEntry();
 		void getNewCar(LinkedList linkedList);
 		void printList();
+		void toCSV();
 	};
 }

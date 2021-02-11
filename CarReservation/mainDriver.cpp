@@ -12,5 +12,7 @@ int main()
 
 	carList.printList();
 
+	carList.toCSV();
+
 	return 0;
 }

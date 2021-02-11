@@ -14,7 +14,7 @@ void LinkedList::getNewCar(LinkedList linkedList)
 
 	std::cin.ignore();
 
-	for (int j = 0; j < i; j++) 
+	for (unsigned int j = 0; j < i; j++) 
 	{
 		//create car object
 		LinkedList::carModel newCar;

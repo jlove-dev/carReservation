@@ -1,6 +1,7 @@
 #include "carHeader.h"
 #include <string>
 #include <iostream>
+#include <fstream>
 
 using namespace Car;
 
@@ -40,4 +41,35 @@ void LinkedList::printList()
 		currentPtr = currentPtr->nextPtr;
 	}
 
+}
+
+void LinkedList::toCSV()
+{
+	LinkedList::carLink* currentPtr = headPtr;
+
+	std::ofstream newFile("car_save_data.csv", std::ios::out, std::ios::trunc);
+
+	if (newFile)
+	{
+		while (currentPtr != nullptr) {
+
+			newFile << "Manufacturer, color, model, year, VIN\n";
+			newFile << currentPtr->newCar.manuf << ",";
+			newFile << currentPtr->newCar.color << ",";
+			newFile << currentPtr->newCar.model << ",";
+			newFile << currentPtr->newCar.year << ",";
+			newFile << currentPtr->newCar.VIN << ",\n";
+
+			currentPtr = currentPtr->nextPtr;
+		}
+
+		std::cout << "Data saved successfully!\n";
+		std::cout << std::endl;
+
+	}
+	else
+	{
+		std::cerr << "Error opening file, returning to menu!";
+		return;
+	}
 }
