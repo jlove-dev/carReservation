@@ -25,7 +25,8 @@ void LinkedList::menuSelection(LinkedList linkedList)
 	std::cout << "2. Delete a car" << std::endl;
 	std::cout << "3. Print list of all cars" << std::endl;
 	std::cout << "4. Save data" << std::endl;
-	std::cout << "5. Exit program" << std::endl;
+	std::cout << "5. Load data" << std::endl;
+	std::cout << "6. Exit program" << std::endl;
 	std::cout << std::endl;
 
 	std::string userChoice;
@@ -52,6 +53,9 @@ void LinkedList::menuSelection(LinkedList linkedList)
 		menuSelection(linkedList);
 		break;
 	case '5':
+		linkedList.readCSV();
+		menuSelection(linkedList);
+	case '6':
 		return;
 	default:
 		std::cout << std::endl;

@@ -2,12 +2,16 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <vector>
 
 using namespace Car;
 
 void LinkedList::getNewCar(LinkedList linkedList)
 {
 	unsigned int i = 0;
+
+	unsigned int year = 0;
 
 	std::cout << std::endl;
 	std::cout << "How many cars do you wish you enter?" << std::endl;
@@ -35,7 +39,8 @@ void LinkedList::getNewCar(LinkedList linkedList)
 
 		//prompt and input the year
 		std::cout << "Enter car year: " << std::endl;
-		std::cin >> newCar.year;
+		std::cin >> year;
+		newCar.yearConversion = std::to_string(year);
 
 		//prompt and input the VIN
 		std::cout << "Enter car VIN: " << std::endl;
@@ -76,7 +81,7 @@ void LinkedList::printList()
 		std::cout << "| " << currentPtr->newCar.manuf << ": ";
 		std::cout << currentPtr->newCar.color << " ";
 		std::cout << currentPtr->newCar.model << " from ";
-		std::cout << currentPtr->newCar.year << " with VIN: ";
+		std::cout << currentPtr->newCar.yearConversion << " with VIN: ";
 		std::cout << currentPtr->newCar.VIN << std::flush;
 
 		std::cout << std::endl;
@@ -94,13 +99,12 @@ void LinkedList::toCSV()
 
 	if (newFile)
 	{
-		newFile << "Manufacturer, color, model, year, VIN\n";
 		while (currentPtr != nullptr) {
 
 			newFile << currentPtr->newCar.manuf << ",";
 			newFile << currentPtr->newCar.color << ",";
 			newFile << currentPtr->newCar.model << ",";
-			newFile << currentPtr->newCar.year << ",";
+			newFile << currentPtr->newCar.yearConversion << ",";
 			newFile << currentPtr->newCar.VIN << ",\n";
 
 			currentPtr = currentPtr->nextPtr;
@@ -114,5 +118,53 @@ void LinkedList::toCSV()
 	{
 		std::cerr << "Error opening file, returning to menu!";
 		return;
+	}
+}
+
+void LinkedList::readCSV()
+{
+	LinkedList::carModel newCar;
+
+	std::vector<std::string> rowStore;
+
+	std::vector<std::vector<std::string>> dataStore;
+
+	std::string row;
+
+	std::ifstream newFile("car_save_data.csv");
+
+	if (newFile)
+	{
+		while (std::getline(newFile, row, '\n'))
+		{
+			rowStore.clear();
+			std::stringstream lineStream(row);
+			std::string cellValue;
+
+				while (std::getline(lineStream, cellValue, ','))
+				{
+
+					rowStore.push_back(cellValue);
+
+				}
+
+			dataStore.push_back(rowStore);
+		}
+	}
+	else
+	{
+		std::cerr << "Error opening file - please save data first!";
+		return;
+	}
+
+	for (int i = 0; i < dataStore.size(); i++)
+	{
+		newCar.manuf = dataStore[i][0];
+		newCar.color = dataStore[i][1];
+		newCar.model = dataStore[i][2];
+		newCar.yearConversion = dataStore[i][3];
+		newCar.VIN = dataStore[i][4];
+
+		LinkedList::prependList(newCar);
 	}
 }

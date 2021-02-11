@@ -13,7 +13,7 @@ namespace Car {
 			std::string color;
 			std::string manuf;
 			std::string VIN;
-			int year;
+			std::string yearConversion;
 		};
 		
 	};
@@ -61,6 +61,7 @@ namespace Car {
 		void getNewCar(LinkedList linkedList);
 		void printList();
 		void toCSV();
+		void readCSV();
 		void menuSelection(LinkedList linkedList);
 		void welcomeMessage();
 	};
